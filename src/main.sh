@@ -165,6 +165,7 @@ function main {
   installTerraform
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
   ls -al
+  pwd
 
   case "${tfSubcommand}" in
     fmt)
