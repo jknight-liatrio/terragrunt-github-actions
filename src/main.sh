@@ -76,7 +76,8 @@ function parseInputs {
 
   tfOutputField=''
   if [ -n "${INPUT_TF_ACTIONS_OUTPUT_FIELD}" != ""] ; then
-    tfOutputField=${INPUT_TF_ACTIONS_OUTPUT_FIELD}
+    echo "your output field is set to ${INPUT_TF_ACTIONS_OUTPUT_FIELD} "
+    tfOutputField="${INPUT_TF_ACTIONS_OUTPUT_FIELD}"
   fi
 }
 
