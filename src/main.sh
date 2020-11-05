@@ -73,6 +73,11 @@ function parseInputs {
   if [ -n "${TF_WORKSPACE}" ]; then
     tfWorkspace="${TF_WORKSPACE}"
   fi
+
+  tfOutputField=''
+  if [ -n "${INPUT_TF_ACTIONS_OUTPUT_FIELD}" != ""] ; then
+    tfOutputField=${INPUT_TF_ACTIONS_OUTPUT_FIELD}
+  fi
 }
 
 function configureCLICredentials {
