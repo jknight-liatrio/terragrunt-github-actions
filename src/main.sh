@@ -60,7 +60,7 @@ function parseInputs {
   fi
 
   tfCLICredentialsToken=""
-  if [ "${INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN}" != "" ]; then
+  if [ "${TOKEN}" != "" ]; then
     tfCLICredentialsToken=${INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN}
   fi
 
@@ -75,7 +75,7 @@ function parseInputs {
   fi
 
   tfOutputField=''
-  if [ -n "${INPUT_TF_ACTIONS_OUTPUT_FIELD}" != ""] ; then
+  if [[ "${INPUT_TF_ACTIONS_OUTPUT_FIELD}" != "" ]] ; then
     echo "your output field is set to ${INPUT_TF_ACTIONS_OUTPUT_FIELD} "
     tfOutputField="${INPUT_TF_ACTIONS_OUTPUT_FIELD}"
   fi

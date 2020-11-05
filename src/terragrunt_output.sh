@@ -3,7 +3,7 @@
 function terragruntOutput {
   # Gather the output of `terragrunt output`.
   echo "output: info: gathering all the outputs for the Terragrunt configuration in ${tfWorkingDir}"
-  if [ ${tfOutputField} != "" ]; then
+  if [[ "${tfOutputField}" != "" ]]; then
     outputOutput=$(${tfBinary} output ${tfOutputField})
   else
     outputOutput=$(${tfBinary} output -json ${*} 2>&1)
