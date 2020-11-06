@@ -3,9 +3,11 @@
 function terragruntApply {
   # Gather the output of `terragrunt apply`.
   echo "apply: info: applying Terragrunt configuration in ${tfWorkingDir}"
-  applyOutput=$(${tfBinary} apply -auto-approve -input=false ${*} 2>&1 | grep -iv password )
+  applyOutput=$(${tfBinary} apply -auto-approve -input=false ${*} 2>&1)
   applyExitCode=${?}
   applyCommentStatus="Failed"
+
+  applyOutput=$(echo "${applyOutput}" | sed  's/^.*password.*$//g')
 
   # Exit code of 0 indicates success. Print the output and exit.
   if [ ${applyExitCode} -eq 0 ]; then

@@ -3,10 +3,12 @@
 function terragruntPlan {
   # Gather the output of `terragrunt plan`.
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
-  planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1 | grep -iv password)
+  planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1)
   planExitCode=${?}
   planHasChanges=false
   planCommentStatus="Failed"
+
+  planOutput=$(echo "${planOutput}" | sed  's/^.*password.*$//g')
 
   # Exit code of 0 indicates success with no changes. Print the output and exit.
   if [ ${planExitCode} -eq 0 ]; then
